@@ -1,0 +1,270 @@
+# CONTE GAME
+#<time>,E,experiment,{type:start, id:<participantId>, menuType:<Conte/FastTap>, numStages:<totalNumStages>, stageOrder:[permutation of {slow, medium, fast}], randomSeed:<randomSeed>, numCommands:<numCommands>, contactCommandPairs:<[contact1, command1,...]>}
+#<time>,E,experiment,{type:end, id:<participantId>, score:<score>}
+#<time>,E,experiment,{type:delay, stageNum:<stageNum>, blockNum:<blockNum>, trialNum:<trialNum>, score:<score>}
+#<time>,E,stage,{type:start, num:<stageNum>, stageType:<slow, medium, fast>, dropTime:<numSeconds>, numBlocks:<numBlocks>}
+#<time>,E,stage,{type:end, num:<stageNum>}
+#<time>,E,block,{type:start, stageNum:<stageNum>, num:<blockNum>, dropTime:<numSeconds>, taskOrder:[cmdName1,cmdName2,...]}
+#<time>,E,block,{type:end, num:<blockNum>}
+#<time>,E,task,{type:start, command:<cmd.name>, currScore:<currScore>, stageNum:<stageNum>, blockNum:<blockNum>, num:<enemyNum>, currScore:<score>, dropTime:<numSeconds>, pixelsPerSecond:<pixelsPerSecond>, startX:<startX>, width:<enemyWidth>, height:<enemyHeight>}
+#<time>,E,task,{type:end, num:<enemyNum>, endReason:<selected, offscreen, wrong, missed>}
+# retention test can end for wrong or missed
+#<time>,K,<correct,error>,{type:swipe, selected:<cmd.name>, correct:<cmd.name>, x1:<x1>, y1:<y1>, x2:<x2>, y2:<y2>}
+#<time>,K,<correct,error>,{type:tap, selected:<cmd.name>, correct:<cmd.name>, x:<x>, y:<y>
+#<time>,K,error,{type:miss, selected:<cmd.name>, correct:<cmd.name>, x:<x>, y:<y>}
+#<time>,K,error,{type:inactiveOrNull, selected:<cmd.name>, correct:<cmd.name>, x:<x>, y:<y>}
+#<time>,K,pos,{x:<x>, y:<y>}
+# pos: falling enemy position
+#<time>,K,s,{type:create, cmd:<commandName>, tool:<toolName>, r:<red>, g:<green>, b:<blue>}
+#<time>,K,s,{type:update, pts:[{x:<xCoord>, y:<yCoord>},...]}
+#<time>,K,s,{type:end}
+# s: stroke
+schema,{type:I, subtype:c, description:conte, data:[{name:id, type:long}, {name:event, type:str, description:U/D/M}, {name:x, type:int}, {name:y, type:int}, {name:contact, type:str}]}
+schema,{type:I, subtype:mp, description:multipoint, data:[{name:id, type:long}, {name:event, type:str, description:U/D/M}, {name:x, type:int}, {name:y, type:int}, {name:contact, type:str}]}
+schema,{type:T, subtype:m, description:menu, data:[{name:event, type:str, description:Activate(A)/Deactivate(D)/Open(O)}]}
+schema,{type:T, subType:ms, description:menu selection, data:[{name:contact, type:str, description:selected contact}]}
+different from actual selection. contact may be selected on menu and different contact then selected before menu deactivated.
+schema,{type:T, subtype:c, description:calibrate menu, data:[{name:old yaw, type:int, description:old yaw zero degs}, {name:new yaw, type:int, description:new yaw degs}]}
+START LOG
+1520467087140,E,experiment,{"type":"start","id":1,"menuType":"Conte","numStages":7,"stageOrder":["slow","medium","fast","medium","fast","medium","retention"],"randomSeed":1,"numCommands":24,"contactCommandPairs":["BME1","copy","LE2","yellow","BME2","paste","WC4","pen4","BC2","brush1","WME1","eraser2","WSE2","eraser3","WC1","pen1","LE3","green","BC3","brush4","LS1","orange","LE4","violet","BSE1","redo","BC1","brush2","LE1","red","WSE1","eraser1","WME2","clear","LS2","blue","BSE2","undo","MS1","black","MS2","white","WC3","pen3","WC2","pen2","BC4","brush3"]}
+1520467087140,E,stage,{"type":"start","num":1,"stageType":"slow","dropTime":20,"numBlocks":4}
+1520467087143,E,block,{"type":"start","stageNum":1,"num":1,"dropTime":20,"taskOrder":["pen4","white","redo","orange","copy","paste","eraser2","clear","brush3","undo","black","brush2","pen2","brush4","green","blue","violet","eraser3","pen1","eraser1","red","yellow","pen3","brush1"]}
+1520467087144,E,task,{"type":"start","command":"pen4","currScore":0,"stageNum":1,"blockNum":1,"num":1,"dropTime":20,"pixelsPerSecond":59.0,"startX":374,"width":100.0,"height":100.0}
+1520467087155,K,pos,{"x":374,"y":-49.0}
+1520467087209,K,pos,{"x":374,"y":-48.0}
+1520467087224,K,pos,{"x":374,"y":-46.9}
+1520467087240,K,pos,{"x":374,"y":-45.9}
+1520467087257,K,pos,{"x":374,"y":-44.9}
+1520467087272,K,pos,{"x":374,"y":-43.9}
+1520467087289,K,pos,{"x":374,"y":-42.9}
+1520467087305,K,pos,{"x":374,"y":-41.9}
+1520467087322,K,pos,{"x":374,"y":-40.9}
+1520467087338,K,pos,{"x":374,"y":-39.9}
+1520467087356,K,pos,{"x":374,"y":-38.9}
+1520467087372,K,pos,{"x":374,"y":-37.9}
+1520467087388,K,pos,{"x":374,"y":-36.9}
+1520467087405,K,pos,{"x":374,"y":-35.9}
+1520467087421,K,pos,{"x":374,"y":-34.9}
+1520467087438,K,pos,{"x":374,"y":-33.9}
+1520467087454,K,pos,{"x":374,"y":-32.9}
+1520467087471,K,pos,{"x":374,"y":-31.9}
+1520467087488,K,pos,{"x":374,"y":-30.9}
+1520467087505,K,pos,{"x":374,"y":-30.0}
+1520467087521,K,pos,{"x":374,"y":-29.0}
+1520467087539,K,pos,{"x":374,"y":-28.0}
+1520467087555,K,pos,{"x":374,"y":-27.0}
+1520467087572,K,pos,{"x":374,"y":-26.0}
+1520467087588,K,pos,{"x":374,"y":-25.0}
+1520467087605,K,pos,{"x":374,"y":-24.0}
+1520467087621,K,pos,{"x":374,"y":-23.1}
+1520467087638,K,pos,{"x":374,"y":-22.1}
+1520467087655,K,pos,{"x":374,"y":-21.1}
+1520467087672,K,pos,{"x":374,"y":-20.1}
+1520467087688,K,pos,{"x":374,"y":-19.1}
+1520467087705,K,pos,{"x":374,"y":-18.1}
+1520467087721,K,pos,{"x":374,"y":-17.1}
+1520467087739,K,pos,{"x":374,"y":-16.2}
+1520467087755,K,pos,{"x":374,"y":-15.2}
+1520467087771,K,pos,{"x":374,"y":-14.2}
+1520467087789,K,pos,{"x":374,"y":-13.2}
+1520467087804,K,pos,{"x":374,"y":-12.2}
+1520467087821,K,pos,{"x":374,"y":-11.2}
+1520467087838,K,pos,{"x":374,"y":-10.2}
+1520467087855,K,pos,{"x":374,"y":-9.3}
+1520467087872,K,pos,{"x":374,"y":-8.3}
+1520467087889,K,pos,{"x":374,"y":-7.3}
+1520467087905,K,pos,{"x":374,"y":-6.3}
+1520467087922,K,pos,{"x":374,"y":-5.3}
+1520467087939,K,pos,{"x":374,"y":-4.3}
+1520467087955,K,pos,{"x":374,"y":-3.4}
+1520467087972,K,pos,{"x":374,"y":-2.4}
+1520467087989,K,pos,{"x":374,"y":-1.4}
+1520467088005,K,pos,{"x":374,"y":-0.4}
+1520467088022,K,pos,{"x":374,"y":0.6}
+1520467088039,K,pos,{"x":374,"y":1.6}
+1520467088055,K,pos,{"x":374,"y":2.5}
+1520467088072,K,pos,{"x":374,"y":3.5}
+1520467088089,K,pos,{"x":374,"y":4.5}
+1520467088105,K,pos,{"x":374,"y":5.5}
+1520467088122,K,pos,{"x":374,"y":6.5}
+1520467088138,K,pos,{"x":374,"y":7.5}
+1520467088155,K,pos,{"x":374,"y":8.4}
+1520467088172,K,pos,{"x":374,"y":9.4}
+1520467088189,K,pos,{"x":374,"y":10.4}
+1520467088205,K,pos,{"x":374,"y":11.4}
+1520467088222,K,pos,{"x":374,"y":12.4}
+1520467088239,K,pos,{"x":374,"y":13.4}
+1520467088256,K,pos,{"x":374,"y":14.3}
+1520467088273,K,pos,{"x":374,"y":15.3}
+1520467088289,K,pos,{"x":374,"y":16.3}
+1520467088306,K,pos,{"x":374,"y":17.3}
+1520467088322,K,pos,{"x":374,"y":18.3}
+1520467088339,K,pos,{"x":374,"y":19.3}
+1520467088356,K,pos,{"x":374,"y":20.2}
+1520467088373,K,pos,{"x":374,"y":21.2}
+1520467088390,K,pos,{"x":374,"y":22.2}
+1520467088406,K,pos,{"x":374,"y":23.2}
+1520467088422,K,pos,{"x":374,"y":24.2}
+1520467088438,K,pos,{"x":374,"y":25.2}
+1520467088455,K,pos,{"x":374,"y":26.2}
+1520467088472,K,pos,{"x":374,"y":27.1}
+1520467088488,K,pos,{"x":374,"y":28.1}
+1520467088505,K,pos,{"x":374,"y":29.1}
+1520467088522,K,pos,{"x":374,"y":30.1}
+1520467088538,K,pos,{"x":374,"y":31.0}
+1520467088554,K,pos,{"x":374,"y":32.0}
+1520467088571,K,pos,{"x":374,"y":33.0}
+1520467088587,K,pos,{"x":374,"y":34.0}
+1520467088604,K,pos,{"x":374,"y":35.0}
+1520467088621,K,pos,{"x":374,"y":35.9}
+1520467088638,K,pos,{"x":374,"y":36.9}
+1520467088654,K,pos,{"x":374,"y":37.9}
+1520467088671,K,pos,{"x":374,"y":38.9}
+1520467088688,K,pos,{"x":374,"y":39.9}
+1520467088705,K,pos,{"x":374,"y":40.8}
+1520467088721,K,pos,{"x":374,"y":41.8}
+1520467088738,K,pos,{"x":374,"y":42.8}
+1520467088754,K,pos,{"x":374,"y":43.8}
+1520467088771,K,pos,{"x":374,"y":44.8}
+1520467088788,K,pos,{"x":374,"y":45.7}
+1520467088804,K,pos,{"x":374,"y":46.7}
+1520467088821,K,pos,{"x":374,"y":47.7}
+1520467088837,K,pos,{"x":374,"y":48.7}
+1520467088854,K,pos,{"x":374,"y":49.7}
+1520467088871,K,pos,{"x":374,"y":50.6}
+1520467088889,K,pos,{"x":374,"y":51.6}
+1520467088905,K,pos,{"x":374,"y":52.6}
+1520467088921,K,pos,{"x":374,"y":53.6}
+1520467088939,K,pos,{"x":374,"y":54.6}
+1520467088957,K,pos,{"x":374,"y":55.6}
+1520467088972,K,pos,{"x":374,"y":56.6}
+1520467088988,K,pos,{"x":374,"y":57.5}
+1520467089005,K,pos,{"x":374,"y":58.5}
+1520467089021,K,pos,{"x":374,"y":59.5}
+1520467089038,K,pos,{"x":374,"y":60.5}
+1520467089055,K,pos,{"x":374,"y":61.5}
+1520467089075,K,pos,{"x":374,"y":62.5}
+1520467089089,K,pos,{"x":374,"y":63.4}
+1520467089105,K,pos,{"x":374,"y":64.4}
+1520467089122,K,pos,{"x":374,"y":65.4}
+1520467089124,I,c,0,D,1252,358,LS2
+1520467089126,I,mp,0,D,1252,358,LS2
+1520467089139,K,pos,{"x":374,"y":66.4}
+1520467089155,K,pos,{"x":374,"y":67.4}
+1520467089171,K,pos,{"x":374,"y":68.4}
+1520467089188,K,pos,{"x":374,"y":69.3}
+1520467089189,I,c,1,M,1150,440,LS2
+1520467089189,I,mp,1,M,1150,440,LS2
+1520467089189,I,c,0,M,1250,355,LS2
+1520467089189,I,mp,0,M,1250,355,LS2
+1520467089189,I,c,2,M,1539,689,LS2
+1520467089189,I,mp,2,M,1539,689,LS2
+1520467089205,K,pos,{"x":374,"y":70.3}
+1520467089205,I,c,0,M,1250,355,LS2
+1520467089205,I,mp,0,M,1250,355,LS2
+1520467089205,I,c,2,M,1541,689,LS2
+1520467089206,I,mp,2,M,1541,689,LS2
+1520467089206,I,c,0,M,1250,355,LS2
+1520467089206,I,mp,0,M,1250,355,LS2
+1520467089206,I,c,2,M,1542,689,LS2
+1520467089206,I,mp,2,M,1542,689,LS2
+1520467089222,K,pos,{"x":374,"y":71.3}
+1520467089237,K,pos,{"x":374,"y":72.3}
+1520467089238,I,c,2,M,1544,688,LS2
+1520467089238,I,mp,2,M,1544,688,LS2
+1520467089255,K,pos,{"x":374,"y":73.3}
+1520467089256,I,c,2,M,1544,688,LS2
+1520467089256,I,mp,2,M,1544,688,LS2
+1520467089271,K,pos,{"x":374,"y":74.3}
+1520467089271,I,c,0,M,1251,355,LS2
+1520467089272,I,mp,0,M,1251,355,LS2
+1520467089272,I,c,2,M,1545,688,LS2
+1520467089272,I,mp,2,M,1545,688,LS2
+1520467089288,K,pos,{"x":374,"y":75.2}
+1520467089288,I,c,0,M,1251,356,LS2
+1520467089288,I,mp,0,M,1251,356,LS2
+1520467089288,I,c,2,M,1546,688,LS2
+1520467089288,I,mp,2,M,1546,688,LS2
+1520467089288,I,c,0,M,1251,357,LS2
+1520467089288,I,mp,0,M,1251,357,LS2
+1520467089289,I,c,2,M,1546,688,LS2
+1520467089289,I,mp,2,M,1546,688,LS2
+1520467089305,K,pos,{"x":374,"y":76.2}
+1520467089322,K,pos,{"x":374,"y":77.2}
+1520467089322,I,c,0,M,1251,357,LS2
+1520467089322,I,mp,0,M,1251,357,LS2
+1520467089322,I,c,2,M,1547,690,LS2
+1520467089322,I,mp,2,M,1547,690,LS2
+1520467089322,I,c,0,M,1251,357,LS2
+1520467089322,I,mp,0,M,1251,357,LS2
+1520467089322,I,c,2,M,1547,690,LS2
+1520467089322,I,mp,2,M,1547,690,LS2
+1520467089338,K,pos,{"x":374,"y":78.2}
+1520467089354,K,pos,{"x":374,"y":79.2}
+1520467089372,K,pos,{"x":374,"y":80.1}
+1520467089389,K,pos,{"x":374,"y":81.1}
+1520467089406,K,pos,{"x":374,"y":82.1}
+1520467089422,K,pos,{"x":374,"y":83.1}
+1520467089438,K,pos,{"x":374,"y":84.1}
+1520467089456,K,pos,{"x":374,"y":85.1}
+1520467089471,K,pos,{"x":374,"y":86.0}
+1520467089487,K,pos,{"x":374,"y":87.0}
+1520467089503,K,pos,{"x":374,"y":88.0}
+1520467089520,K,pos,{"x":374,"y":89.0}
+1520467089538,K,pos,{"x":374,"y":90.0}
+1520467089556,K,pos,{"x":374,"y":90.9}
+1520467089571,K,pos,{"x":374,"y":91.9}
+1520467089587,K,pos,{"x":374,"y":92.9}
+1520467089604,K,pos,{"x":374,"y":93.9}
+1520467089621,K,pos,{"x":374,"y":94.9}
+1520467089638,K,pos,{"x":374,"y":95.8}
+1520467089639,I,c,1,M,1150,440,LS2
+1520467089639,I,mp,1,U,1348,565,LS2
+1520467089639,I,c,3,M,1445,767,LS2
+1520467089639,I,mp,3,U,1380,632,LS2
+1520467089639,I,c,0,M,1251,357,LS2
+1520467089639,I,mp,0,U,1348,563,LS2
+1520467089639,I,c,2,U,1547,690,LS2
+1520467089639,I,mp,2,U,1348,563,LS2
+1520467089641,K,error,{"type":"tap","selected":"blue","correct":"pen4","x":1348,"y":563}
+1520467089655,K,pos,{"x":374,"y":96.8}
+1520467089677,K,pos,{"x":374,"y":97.8}
+1520467089707,K,pos,{"x":374,"y":98.9}
+1520467089724,K,pos,{"x":374,"y":99.9}
+1520467089754,K,pos,{"x":374,"y":101.0}
+1520467089771,K,pos,{"x":374,"y":102.1}
+1520467089789,K,pos,{"x":374,"y":103.2}
+1520467089805,K,pos,{"x":374,"y":104.3}
+1520467089821,K,pos,{"x":374,"y":105.3}
+1520467089839,K,pos,{"x":374,"y":106.4}
+1520467089859,K,pos,{"x":374,"y":107.5}
+1520467089888,K,pos,{"x":374,"y":108.6}
+1520467089905,K,pos,{"x":374,"y":109.7}
+1520467089926,K,pos,{"x":374,"y":110.8}
+1520467089939,K,pos,{"x":374,"y":111.9}
+1520467089957,K,pos,{"x":374,"y":112.9}
+1520467089972,K,pos,{"x":374,"y":114.0}
+1520467089989,K,pos,{"x":374,"y":115.0}
+1520467090006,K,pos,{"x":374,"y":116.1}
+1520467090021,K,pos,{"x":374,"y":117.1}
+1520467090038,K,pos,{"x":374,"y":118.1}
+1520467090055,K,pos,{"x":374,"y":119.1}
+1520467090072,K,pos,{"x":374,"y":120.1}
+1520467090088,K,pos,{"x":374,"y":121.1}
+1520467090104,K,pos,{"x":374,"y":122.2}
+1520467090122,K,pos,{"x":374,"y":123.2}
+1520467090139,K,pos,{"x":374,"y":124.2}
+1520467090155,K,pos,{"x":374,"y":125.2}
+1520467090171,K,pos,{"x":374,"y":126.2}
+1520467090188,K,pos,{"x":374,"y":127.2}
+1520467090205,K,pos,{"x":374,"y":128.2}
+1520467090221,K,pos,{"x":374,"y":129.2}
+1520467090238,K,pos,{"x":374,"y":130.1}
+1520467090254,K,pos,{"x":374,"y":131.1}
+1520467090271,K,pos,{"x":374,"y":132.1}
+1520467090290,K,pos,{"x":374,"y":133.1}
+1520467090307,K,pos,{"x":374,"y":134.1}
+1520467090322,K,pos,{"x":374,"y":135.1}
+1520467090338,K,pos,{"x":374,"y":136.1}
+1520467090355,K,pos,{"x":374,"y":137.1}
+1520467090360,E,experiment,{"type":"delay","stageNum":1,"blockNum":1,"trialNum":1,"score":-15}

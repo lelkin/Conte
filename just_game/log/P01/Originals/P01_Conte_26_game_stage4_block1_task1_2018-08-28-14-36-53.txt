@@ -1,0 +1,127 @@
+# CONTE GAME
+#<time>,E,experiment,{type:start, id:<participantId>, menuType:<Conte/FastTap>, numStages:<totalNumStages>, stageOrder:[permutation of {slow, medium, fast}], randomSeed:<randomSeed>, numCommands:<numCommands>, contactCommandPairs:<[contact1, command1,...]>}
+#<time>,E,experiment,{type:end, id:<participantId>, score:<score>}
+#<time>,E,experiment,{type:delay, stageNum:<stageNum>, blockNum:<blockNum>, trialNum:<trialNum>, score:<score>}
+#<time>,E,stage,{type:start, num:<stageNum>, stageType:<slow, medium, fast>, dropTime:<numSeconds>, numBlocks:<numBlocks>}
+#<time>,E,stage,{type:end, num:<stageNum>}
+#<time>,E,block,{type:start, stageNum:<stageNum>, num:<blockNum>, dropTime:<numSeconds>, taskOrder:[cmdName1,cmdName2,...]}
+#<time>,E,block,{type:end, num:<blockNum>}
+#<time>,E,task,{type:start, command:<cmd.name>, currScore:<currScore>, stageNum:<stageNum>, blockNum:<blockNum>, num:<enemyNum>, currScore:<score>, dropTime:<numSeconds>, pixelsPerSecond:<pixelsPerSecond>, startX:<startX>, width:<enemyWidth>, height:<enemyHeight>}
+#<time>,E,task,{type:end, num:<enemyNum>, endReason:<selected, offscreen, wrong, missed>}
+# retention test can end for wrong or missed
+#<time>,K,<correct,error>,{type:swipe, selected:<cmd.name>, correct:<cmd.name>, x1:<x1>, y1:<y1>, x2:<x2>, y2:<y2>}
+#<time>,K,<correct,error>,{type:tap, selected:<cmd.name>, correct:<cmd.name>, x:<x>, y:<y>
+#<time>,K,error,{type:miss, selected:<cmd.name>, correct:<cmd.name>, x:<x>, y:<y>}
+#<time>,K,error,{type:inactiveOrNull, selected:<cmd.name>, correct:<cmd.name>, x:<x>, y:<y>}
+#<time>,K,pos,{x:<x>, y:<y>}
+# pos: falling enemy position
+#<time>,K,s,{type:create, cmd:<commandName>, tool:<toolName>, r:<red>, g:<green>, b:<blue>}
+#<time>,K,s,{type:update, pts:[{x:<xCoord>, y:<yCoord>},...]}
+#<time>,K,s,{type:end}
+# s: stroke
+schema,{type:I, subtype:c, description:conte, data:[{name:id, type:long}, {name:event, type:str, description:U/D/M}, {name:x, type:int}, {name:y, type:int}, {name:contact, type:str}]}
+schema,{type:I, subtype:mp, description:multipoint, data:[{name:id, type:long}, {name:event, type:str, description:U/D/M}, {name:x, type:int}, {name:y, type:int}, {name:contact, type:str}]}
+schema,{type:T, subtype:m, description:menu, data:[{name:event, type:str, description:Activate(A)/Deactivate(D)/Open(O)}]}
+schema,{type:T, subType:ms, description:menu selection, data:[{name:contact, type:str, description:selected contact}]}
+different from actual selection. contact may be selected on menu and different contact then selected before menu deactivated.
+schema,{type:T, subtype:c, description:calibrate menu, data:[{name:old yaw, type:int, description:old yaw zero degs}, {name:new yaw, type:int, description:new yaw degs}]}
+START LOG
+1535481413511,E,stage,{"type":"start","num":4,"stageType":"medium","dropTime":10,"numBlocks":4}
+1535481413512,E,block,{"type":"start","stageNum":4,"num":1,"dropTime":10,"taskOrder":["blue","copy","black","undo","paste","brush1","pen3","red","eraser3","white","orange","pen1","eraser1","open","brush4","eraser2","violet","clear","save","pen4","brush2","brush3","redo","green","yellow","pen2"]}
+1535481413512,E,task,{"type":"start","command":"blue","currScore":-2830,"stageNum":4,"blockNum":1,"num":1,"dropTime":10,"pixelsPerSecond":118.0,"startX":668,"width":100.0,"height":100.0}
+1535481413514,K,pos,{"x":668,"y":-47.9}
+1535481413576,K,pos,{"x":668,"y":-45.7}
+1535481413593,K,pos,{"x":668,"y":-43.4}
+1535481413610,K,pos,{"x":668,"y":-41.2}
+1535481413627,K,pos,{"x":668,"y":-39.1}
+1535481413644,K,pos,{"x":668,"y":-36.9}
+1535481413660,K,pos,{"x":668,"y":-34.8}
+1535481413676,K,pos,{"x":668,"y":-32.7}
+1535481413694,K,pos,{"x":668,"y":-30.6}
+1535481413710,K,pos,{"x":668,"y":-28.5}
+1535481413727,K,pos,{"x":668,"y":-26.4}
+1535481413743,K,pos,{"x":668,"y":-24.4}
+1535481413759,K,pos,{"x":668,"y":-22.3}
+1535481413776,K,pos,{"x":668,"y":-20.3}
+1535481413792,K,pos,{"x":668,"y":-18.3}
+1535481413809,K,pos,{"x":668,"y":-16.3}
+1535481413826,K,pos,{"x":668,"y":-14.3}
+1535481413843,K,pos,{"x":668,"y":-12.3}
+1535481413860,K,pos,{"x":668,"y":-10.3}
+1535481413876,K,pos,{"x":668,"y":-8.3}
+1535481413895,K,pos,{"x":668,"y":-6.3}
+1535481413910,K,pos,{"x":668,"y":-4.3}
+1535481413926,K,pos,{"x":668,"y":-2.3}
+1535481413942,K,pos,{"x":668,"y":-0.3}
+1535481413958,K,pos,{"x":668,"y":1.7}
+1535481413974,K,pos,{"x":668,"y":3.6}
+1535481413991,K,pos,{"x":668,"y":5.6}
+1535481414007,K,pos,{"x":668,"y":7.6}
+1535481414023,K,pos,{"x":668,"y":9.5}
+1535481414038,K,pos,{"x":668,"y":11.4}
+1535481414054,K,pos,{"x":668,"y":13.4}
+1535481414071,K,pos,{"x":668,"y":15.3}
+1535481414087,K,pos,{"x":668,"y":17.3}
+1535481414103,K,pos,{"x":668,"y":19.2}
+1535481414120,K,pos,{"x":668,"y":21.1}
+1535481414136,K,pos,{"x":668,"y":23.0}
+1535481414153,K,pos,{"x":668,"y":25.0}
+1535481414169,K,pos,{"x":668,"y":26.9}
+1535481414185,K,pos,{"x":668,"y":28.8}
+1535481414202,K,pos,{"x":668,"y":30.8}
+1535481414218,K,pos,{"x":668,"y":32.7}
+1535481414234,K,pos,{"x":668,"y":34.6}
+1535481414250,K,pos,{"x":668,"y":36.5}
+1535481414266,K,pos,{"x":668,"y":38.5}
+1535481414282,K,pos,{"x":668,"y":40.4}
+1535481414298,K,pos,{"x":668,"y":42.3}
+1535481414314,K,pos,{"x":668,"y":44.2}
+1535481414331,K,pos,{"x":668,"y":46.1}
+1535481414347,K,pos,{"x":668,"y":48.0}
+1535481414363,K,pos,{"x":668,"y":50.0}
+1535481414380,K,pos,{"x":668,"y":51.9}
+1535481414396,K,pos,{"x":668,"y":53.8}
+1535481414413,K,pos,{"x":668,"y":55.7}
+1535481414430,K,pos,{"x":668,"y":57.7}
+1535481414446,K,pos,{"x":668,"y":59.6}
+1535481414462,K,pos,{"x":668,"y":61.5}
+1535481414479,K,pos,{"x":668,"y":63.5}
+1535481414495,K,pos,{"x":668,"y":65.4}
+1535481414512,K,pos,{"x":668,"y":67.3}
+1535481414528,K,pos,{"x":668,"y":69.3}
+1535481414545,K,pos,{"x":668,"y":71.2}
+1535481414561,K,pos,{"x":668,"y":73.1}
+1535481414577,K,pos,{"x":668,"y":75.1}
+1535481414595,K,pos,{"x":668,"y":77.0}
+1535481414610,K,pos,{"x":668,"y":78.9}
+1535481414626,K,pos,{"x":668,"y":80.9}
+1535481414642,K,pos,{"x":668,"y":82.8}
+1535481414658,K,pos,{"x":668,"y":84.7}
+1535481414675,K,pos,{"x":668,"y":86.6}
+1535481414692,K,pos,{"x":668,"y":88.6}
+1535481414709,K,pos,{"x":668,"y":90.5}
+1535481414727,K,pos,{"x":668,"y":92.4}
+1535481414743,K,pos,{"x":668,"y":94.4}
+1535481414759,K,pos,{"x":668,"y":96.3}
+1535481414775,K,pos,{"x":668,"y":98.3}
+1535481414791,K,pos,{"x":668,"y":100.2}
+1535481414808,K,pos,{"x":668,"y":102.1}
+1535481414824,K,pos,{"x":668,"y":104.1}
+1535481414841,K,pos,{"x":668,"y":106.0}
+1535481414858,K,pos,{"x":668,"y":107.9}
+1535481414875,K,pos,{"x":668,"y":109.9}
+1535481414892,K,pos,{"x":668,"y":111.8}
+1535481414909,K,pos,{"x":668,"y":113.8}
+1535481414925,K,pos,{"x":668,"y":115.8}
+1535481414941,K,pos,{"x":668,"y":117.7}
+1535481414960,K,pos,{"x":668,"y":119.7}
+1535481414975,K,pos,{"x":668,"y":121.6}
+1535481414991,K,pos,{"x":668,"y":123.6}
+1535481415008,K,pos,{"x":668,"y":125.5}
+1535481415025,K,pos,{"x":668,"y":127.5}
+1535481415042,K,pos,{"x":668,"y":129.4}
+1535481415059,K,pos,{"x":668,"y":131.4}
+1535481415076,K,pos,{"x":668,"y":133.4}
+1535481415093,K,pos,{"x":668,"y":135.4}
+1535481415109,K,pos,{"x":668,"y":137.3}
+1535481415113,E,experiment,{"type":"delay","stageNum":4,"blockNum":1,"trialNum":1,"score":-2830}

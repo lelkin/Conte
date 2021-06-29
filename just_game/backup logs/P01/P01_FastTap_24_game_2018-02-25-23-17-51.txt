@@ -1,0 +1,224 @@
+# CONTE GAME
+#<time>,E,experiment,{type:start, id:<participantId>, menuType:<Conte/FastTap>, numStages:<totalNumStages>, stageOrder:[permutation of {slow, medium, fast}], randomSeed:<randomSeed>, numCommands:<numCommands>, contactCommandPairs:<[contact1, command1,...]>}
+#<time>,E,experiment,{type:end, id:<participantId>, score:<score>}
+#<time>,E,stage,{type:start, num:<stageNum>, stageType:<slow, medium, fast>, dropTime:<numSeconds>, numBlocks:<numBlocks>}
+#<time>,E,stage,{type:end, num:<stageNum>}
+#<time>,E,block,{type:start, stageNum:<stageNum>, num:<blockNum>, dropTime:<numSeconds>, taskOrder:[cmdName1,cmdName2,...]}
+#<time>,E,block,{type:end, num:<blockNum>}
+#<time>,E,task,{type:start, command:<cmd.name>, currScore:<currScore>, stageNum:<stageNum>, blockNum:<blockNum>, num:<enemyNum>, currScore:<score>, dropTime:<numSeconds>, pixelsPerSecond:<pixelsPerSecond>, startX:<startX>, width:<enemyWidth>, height:<enemyHeight>}
+#<time>,E,task,{type:end, num:<enemyNum>, endReason:<selected, offscreen, wrong, missed>}
+# retention test can end for wrong or missed
+#<time>,K,<correct,error>,{type:swipe, selected:<cmd.name>, correct:<cmd.name>, x1:<x1>, y1:<y1>, x2:<x2>, y2:<y2>}
+#<time>,K,<correct,error>,{type:tap, selected:<cmd.name>, correct:<cmd.name>, x:<x>, y:<y>
+#<time>,K,error,{type:miss, selected:<cmd.name>, correct:<cmd.name>, x:<x>, y:<y>}
+#<time>,K,pos,{x:<x>, y:<y>}
+# pos: falling enemy position
+#<time>,K,s,{type:create, cmd:<commandName>, tool:<toolName>, r:<red>, g:<green>, b:<blue>}
+#<time>,K,s,{type:update, pts:[{x:<xCoord>, y:<yCoord>},...]}
+#<time>,K,s,{type:end}
+# s: stroke
+schema,{type:I, subtype:c, description:conte, data:[{name:id, type:long}, {name:event, type:str, description:U/D/M}, {name:x, type:int}, {name:y, type:int}, {name:contact, type:str}]}
+schema,{type:I, subtype:mp, description:multipoint, data:[{name:id, type:long}, {name:event, type:str, description:U/D/M}, {name:x, type:int}, {name:y, type:int}, {name:contact, type:str}]}
+schema,{type:T, subtype:m, description:menu, data:[{name:event, type:str, description:Activate(A)/Deactivate(D)/Open(O)}]}
+schema,{type:T, subType:ms, description:menu selection, data:[{name:contact, type:str, description:selected contact}]}
+different from actual selection. contact may be selected on menu and different contact then selected before menu deactivated.
+schema,{type:T, subtype:c, description:calibrate menu, data:[{name:old yaw, type:int, description:old yaw zero degs}, {name:new yaw, type:int, description:new yaw degs}]}
+START LOG
+1519618680997,E,experiment,{"type":"start","id":1,"menuType":"FastTap","numStages":6,"stageOrder":["slow","medium","fast","medium","fast","medium"],"randomSeed":1,"numCommands":24,"contactCommandPairs":["LS2","blue","WME2","clear","BC3","brush4","BME1","copy","BC4","brush3","LE4","violet","LS1","orange","LE2","yellow","WC1","pen1","WC2","pen2","BSE1","redo","BC1","brush2","MS2","white","WSE1","eraser1","WME1","eraser2","LE1","red","LE3","green","MS1","black","WC3","pen3","BME2","paste","WC4","pen4","WSE2","eraser3","BSE2","undo","BC2","brush1"]}
+1519618680998,E,stage,{"type":"start","num":1,"stageType":"slow","dropTime":20,"numBlocks":4}
+1519618681002,E,block,{"type":"start","stageNum":1,"num":1,"dropTime":20,"taskOrder":["pen4","white","redo","orange","copy","paste","eraser2","clear","brush3","undo","black","brush2","pen2","brush4","green","blue","violet","eraser3","pen1","eraser1","red","yellow","pen3","brush1"]}
+1519618681005,E,task,{"type":"start","command":"pen4","currScore":0,"stageNum":1,"blockNum":1,"num":1,"dropTime":20,"pixelsPerSecond":40.0,"startX":227,"width":100.0,"height":100.0}
+1519618681013,K,pos,{"x":227,"y":-49.3}
+1519618681055,K,pos,{"x":227,"y":-48.6}
+1519618681078,K,pos,{"x":227,"y":-47.9}
+1519618681095,K,pos,{"x":227,"y":-47.2}
+1519618681112,K,pos,{"x":227,"y":-46.5}
+1519618681129,K,pos,{"x":227,"y":-45.8}
+1519618681146,K,pos,{"x":227,"y":-45.1}
+1519618681162,K,pos,{"x":227,"y":-44.3}
+1519618681179,K,pos,{"x":227,"y":-43.7}
+1519618681195,K,pos,{"x":227,"y":-43.0}
+1519618681212,K,pos,{"x":227,"y":-42.3}
+1519618681229,K,pos,{"x":227,"y":-41.6}
+1519618681245,K,pos,{"x":227,"y":-40.9}
+1519618681262,K,pos,{"x":227,"y":-40.2}
+1519618681279,K,pos,{"x":227,"y":-39.5}
+1519618681296,K,pos,{"x":227,"y":-38.8}
+1519618681312,K,pos,{"x":227,"y":-38.2}
+1519618681329,K,pos,{"x":227,"y":-37.5}
+1519618681345,K,pos,{"x":227,"y":-36.8}
+1519618681362,K,pos,{"x":227,"y":-36.1}
+1519618681379,K,pos,{"x":227,"y":-35.5}
+1519618681396,K,pos,{"x":227,"y":-34.8}
+1519618681412,K,pos,{"x":227,"y":-34.1}
+1519618681429,K,pos,{"x":227,"y":-33.4}
+1519618681445,K,pos,{"x":227,"y":-32.8}
+1519618681461,K,pos,{"x":227,"y":-32.1}
+1519618681478,K,pos,{"x":227,"y":-31.4}
+1519618681495,K,pos,{"x":227,"y":-30.7}
+1519618681512,K,pos,{"x":227,"y":-30.1}
+1519618681529,K,pos,{"x":227,"y":-29.4}
+1519618681545,K,pos,{"x":227,"y":-28.7}
+1519618681562,K,pos,{"x":227,"y":-28.1}
+1519618681579,K,pos,{"x":227,"y":-27.4}
+1519618681595,K,pos,{"x":227,"y":-26.7}
+1519618681612,K,pos,{"x":227,"y":-26.1}
+1519618681629,K,pos,{"x":227,"y":-25.4}
+1519618681645,K,pos,{"x":227,"y":-24.7}
+1519618681662,K,pos,{"x":227,"y":-24.1}
+1519618681664,T,m,A
+1519618681679,K,pos,{"x":227,"y":-23.4}
+1519618681695,K,pos,{"x":227,"y":-22.7}
+1519618681712,K,pos,{"x":227,"y":-22.1}
+1519618681729,K,pos,{"x":227,"y":-21.4}
+1519618681745,K,pos,{"x":227,"y":-20.7}
+1519618681762,K,pos,{"x":227,"y":-20.1}
+1519618681778,K,pos,{"x":227,"y":-19.4}
+1519618681795,K,pos,{"x":227,"y":-18.7}
+1519618681812,K,pos,{"x":227,"y":-18.1}
+1519618681829,K,pos,{"x":227,"y":-17.4}
+1519618681845,K,pos,{"x":227,"y":-16.7}
+1519618681863,K,pos,{"x":227,"y":-16.0}
+1519618681879,K,pos,{"x":227,"y":-15.4}
+1519618681896,K,pos,{"x":227,"y":-14.7}
+1519618681898,T,ms,WC4
+1519618681912,K,pos,{"x":227,"y":-14.0}
+1519618681929,K,pos,{"x":227,"y":-13.4}
+1519618681946,K,pos,{"x":227,"y":-12.7}
+1519618681962,K,pos,{"x":227,"y":-12.1}
+1519618681963,T,m,D
+1519618681978,K,pos,{"x":227,"y":-11.4}
+1519618681995,K,pos,{"x":227,"y":-10.7}
+1519618682012,K,pos,{"x":227,"y":-10.1}
+1519618682028,K,pos,{"x":227,"y":-9.4}
+1519618682045,K,pos,{"x":227,"y":-8.7}
+1519618682062,K,pos,{"x":227,"y":-8.1}
+1519618682079,K,pos,{"x":227,"y":-7.4}
+1519618682095,K,pos,{"x":227,"y":-6.7}
+1519618682112,K,pos,{"x":227,"y":-6.1}
+1519618682129,K,pos,{"x":227,"y":-5.4}
+1519618682146,K,pos,{"x":227,"y":-4.7}
+1519618682162,K,pos,{"x":227,"y":-4.1}
+1519618682179,K,pos,{"x":227,"y":-3.4}
+1519618682195,K,pos,{"x":227,"y":-2.7}
+1519618682212,K,pos,{"x":227,"y":-2.1}
+1519618682229,K,pos,{"x":227,"y":-1.4}
+1519618682245,K,pos,{"x":227,"y":-0.7}
+1519618682262,K,pos,{"x":227,"y":-0.1}
+1519618682279,K,pos,{"x":227,"y":0.6}
+1519618682296,K,pos,{"x":227,"y":1.3}
+1519618682313,K,pos,{"x":227,"y":1.9}
+1519618682329,K,pos,{"x":227,"y":2.6}
+1519618682346,K,pos,{"x":227,"y":3.3}
+1519618682362,K,pos,{"x":227,"y":3.9}
+1519618682379,K,pos,{"x":227,"y":4.6}
+1519618682394,K,pos,{"x":227,"y":5.3}
+1519618682411,K,pos,{"x":227,"y":5.9}
+1519618682428,K,pos,{"x":227,"y":6.6}
+1519618682445,K,pos,{"x":227,"y":7.3}
+1519618682461,K,pos,{"x":227,"y":7.9}
+1519618682478,K,pos,{"x":227,"y":8.6}
+1519618682495,K,pos,{"x":227,"y":9.3}
+1519618682512,K,pos,{"x":227,"y":9.9}
+1519618682528,K,pos,{"x":227,"y":10.6}
+1519618682545,K,pos,{"x":227,"y":11.3}
+1519618682562,K,pos,{"x":227,"y":11.9}
+1519618682578,K,pos,{"x":227,"y":12.6}
+1519618682595,K,pos,{"x":227,"y":13.3}
+1519618682612,K,pos,{"x":227,"y":13.9}
+1519618682628,K,pos,{"x":227,"y":14.6}
+1519618682645,K,pos,{"x":227,"y":15.3}
+1519618682662,K,pos,{"x":227,"y":15.9}
+1519618682678,K,pos,{"x":227,"y":16.6}
+1519618682695,K,pos,{"x":227,"y":17.3}
+1519618682711,K,pos,{"x":227,"y":17.9}
+1519618682728,K,pos,{"x":227,"y":18.6}
+1519618682745,K,pos,{"x":227,"y":19.3}
+1519618682762,K,pos,{"x":227,"y":19.9}
+1519618682778,K,pos,{"x":227,"y":20.6}
+1519618682795,K,pos,{"x":227,"y":21.2}
+1519618682814,K,pos,{"x":227,"y":21.9}
+1519618682829,K,pos,{"x":227,"y":22.6}
+1519618682845,K,pos,{"x":227,"y":23.2}
+1519618682862,K,pos,{"x":227,"y":23.9}
+1519618682878,K,pos,{"x":227,"y":24.6}
+1519618682895,K,pos,{"x":227,"y":25.2}
+1519618682912,K,pos,{"x":227,"y":25.9}
+1519618682931,K,pos,{"x":227,"y":26.6}
+1519618682945,K,pos,{"x":227,"y":27.2}
+1519618682962,K,pos,{"x":227,"y":27.9}
+1519618682978,K,pos,{"x":227,"y":28.6}
+1519618682996,K,pos,{"x":227,"y":29.3}
+1519618683012,K,pos,{"x":227,"y":29.9}
+1519618683028,K,pos,{"x":227,"y":30.6}
+1519618683045,K,pos,{"x":227,"y":31.2}
+1519618683062,K,pos,{"x":227,"y":31.9}
+1519618683078,K,pos,{"x":227,"y":32.6}
+1519618683095,K,pos,{"x":227,"y":33.2}
+1519618683112,K,pos,{"x":227,"y":33.9}
+1519618683129,K,pos,{"x":227,"y":34.6}
+1519618683146,K,pos,{"x":227,"y":35.2}
+1519618683162,K,pos,{"x":227,"y":35.9}
+1519618683178,K,pos,{"x":227,"y":36.6}
+1519618683195,K,pos,{"x":227,"y":37.2}
+1519618683212,K,pos,{"x":227,"y":37.9}
+1519618683228,K,pos,{"x":227,"y":38.6}
+1519618683245,K,pos,{"x":227,"y":39.2}
+1519618683262,K,pos,{"x":227,"y":39.9}
+1519618683264,I,c,1,D,370,213,WC4
+1519618683266,K,s,{"type":"create","cmd":"pen4","tool":"PEN","weight":20,"r":0,"g":0,"b":0}
+1519618683267,K,s,{"type":"update","pts":[{"x":370, "y":213}]}
+1519618683279,K,pos,{"x":227,"y":40.6}
+1519618683296,K,pos,{"x":227,"y":41.2}
+1519618683312,K,pos,{"x":227,"y":41.9}
+1519618683312,I,c,1,M,378,189,WC4
+1519618683312,K,s,{"type":"update","pts":[{"x":378, "y":189}]}
+1519618683328,K,pos,{"x":227,"y":42.6}
+1519618683329,I,c,1,M,375,184,WC4
+1519618683329,K,s,{"type":"update","pts":[{"x":375, "y":184}]}
+1519618683345,K,pos,{"x":227,"y":43.2}
+1519618683345,I,c,1,M,353,158,WC4
+1519618683346,K,s,{"type":"update","pts":[{"x":353, "y":158}]}
+1519618683346,I,c,1,M,345,150,WC4
+1519618683346,K,s,{"type":"update","pts":[{"x":345, "y":150}]}
+1519618683362,K,pos,{"x":227,"y":43.9}
+1519618683378,K,pos,{"x":227,"y":44.6}
+1519618683378,I,c,1,M,325,127,WC4
+1519618683378,K,s,{"type":"update","pts":[{"x":325, "y":127}]}
+1519618683395,K,pos,{"x":227,"y":45.2}
+1519618683396,I,c,1,M,315,119,WC4
+1519618683396,K,s,{"type":"update","pts":[{"x":315, "y":119}]}
+1519618683396,I,c,1,M,281,93,WC4
+1519618683396,K,s,{"type":"update","pts":[{"x":281, "y":93}]}
+1519618683396,K,correct,{"type":"swipe","selected":"pen4","correct":"pen4","x1":315,"y1":119,"x2":281,"y2":93}
+1519618683396,E,task,{"type":"end","num":1,"endReason":"selected"}
+1519618683435,I,c,1,M,270,86,WC4
+1519618683435,K,s,{"type":"update","pts":[{"x":270, "y":86}]}
+1519618683435,I,c,1,M,229,63,WC4
+1519618683435,K,s,{"type":"update","pts":[{"x":229, "y":63}]}
+1519618683435,I,c,1,M,217,57,WC4
+1519618683435,K,s,{"type":"update","pts":[{"x":217, "y":57}]}
+1519618683474,I,c,1,M,175,43,WC4
+1519618683474,K,s,{"type":"update","pts":[{"x":175, "y":43}]}
+1519618683474,I,c,1,M,158,38,WC4
+1519618683474,K,s,{"type":"update","pts":[{"x":158, "y":38}]}
+1519618683490,I,c,1,M,140,33,WC4
+1519618683490,K,s,{"type":"update","pts":[{"x":140, "y":33}]}
+1519618683523,I,c,1,M,119,32,WC4
+1519618683523,K,s,{"type":"update","pts":[{"x":119, "y":32}]}
+1519618683523,I,c,1,M,113,32,WC4
+1519618683523,K,s,{"type":"update","pts":[{"x":113, "y":32}]}
+1519618683588,I,c,1,M,96,37,WC4
+1519618683588,K,s,{"type":"update","pts":[{"x":96, "y":37}]}
+1519618683588,I,c,1,M,92,39,WC4
+1519618683588,K,s,{"type":"update","pts":[{"x":92, "y":39}]}
+1519618683588,I,c,1,M,88,42,WC4
+1519618683588,K,s,{"type":"update","pts":[{"x":88, "y":42}]}
+1519618683588,I,c,1,M,85,45,WC4
+1519618683588,K,s,{"type":"update","pts":[{"x":85, "y":45}]}
+1519618683604,I,c,1,M,85,45,WC4
+1519618683604,K,s,{"type":"update","pts":[{"x":85, "y":45}]}
+1519618683918,I,c,1,U,85,45,WC4
+1519618683918,K,s,{"type":"update","pts":[]}
+1519618683918,K,s,{"type":"end"}
+1519618684415,E,task,{"type":"start","command":"white","currScore":50,"stageNum":1,"blockNum":1,"num":2,"dropTime":20,"pixelsPerSecond":40.0,"startX":335,"width":100.0,"height":100.0}
